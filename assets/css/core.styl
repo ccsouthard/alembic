@@ -1,0 +1,752 @@
+@import 'nib/vendor'
+vendor-prefixes = webkit moz o ms official
+
+gold = #CFB212
+blue = #496ea2
+red = #ca3119
+tan = #E0E1CD
+dark_gray = #484747
+gray = #d3d3d2
+light_gray = #eee
+yellow = #fbd640
+orange = #e76d18
+
+@import 'reset.css'
+@import 'typography.styl'
+
+body
+	min-width 300px
+	background url('../img/main-bg.jpg')
+	margin 0
+	padding 0
+	border-top 10px solid gold
+
+	&.home
+		background url('../img/top-bg.gif') repeat-x top, url('../img/main-bg.jpg')
+
+.box
+	box-shadow 0 0 5px 3px rgba(0,0,0,0.4)
+	background white
+	padding 10px
+
+.wrap
+	max-width 1000px
+	margin-left auto
+	margin-right auto
+
+	.entry
+		@extends .box
+		margin 10px
+
+.news .entry
+	//to make the circle holding the date overlap properly
+	padding-top 30px
+	margin-top -30px
+
+a:link,a:visited
+	color dark_gray
+
+/* Header */
+#header
+	display block
+	height 125px
+	background white
+	z-index -999
+
+	.inner
+		padding-top 30px
+
+#content
+	background white
+
+	.statement
+		font-size 38px
+		font-weight 400
+		text-align center
+		color black
+
+	.count
+		padding-top -5px
+		display block
+		margin-bottom 15px
+
+		h2
+			background white
+			font-size 24px
+			font-weight 400
+			color black
+			display inline
+			padding 0 15px
+
+footer
+	background-color black
+	color white
+	padding 20px 0
+
+	p.copy
+		padding 20px
+		text-align right
+
+	a
+		&:link, &:visited
+			color white
+
+#comments_list
+	ul li
+		margin-left 15px
+		padding-left 15px
+		border-left 2px solid tan
+
+	li
+		margin-bottom 20px
+		list-style none
+
+		.user_info
+			img
+				float left
+				margin 0 10px 10px 0
+
+			h3
+				font-size 20px
+				color dark_gray
+				font-weight 400
+				display inline
+
+			small
+				font-size 10px
+				font-style italic
+
+			p
+				margin-top 5px
+
+				a
+					text-decoration underline
+
+		.comment
+			clear both
+			display block
+			margin-top 10px
+			line-height 25px
+
+			p
+				line-height 25px
+
+#respond
+	h2
+		font-size 24px
+		font-weight 400
+		color black
+		margin-bottom 15px
+
+	form
+		input,textarea
+			padding 8px
+			font 14px 'Helvetica Neue', Arial
+			width 150px
+			margin-bottom 15px
+
+		textarea
+			width 492px
+			height 200px
+			display block
+
+::selection
+	background red
+	/* Safari */
+	color white
+
+::-moz-selection
+	background red
+	/* Firefox */
+	color white
+
+/* Slider */
+.ls-container
+	position relative
+
+	.avatar
+		background white
+		padding 5px 5px 3px
+		position relative
+
+		span
+			position absolute
+			background url('../img/slider/triangle.png') no-repeat bottom
+			padding-bottom 13px
+			top 15px
+			left -10px
+			z-index 10
+
+			a
+				background yellow
+				padding 5px
+				text-decoration none
+				font-weight bold
+
+	p
+		margin-top 25px
+		color dark_gray
+		height 125px
+		margin-bottom 10px
+		line-height 22px
+
+	.links
+		text-align center
+
+	.more
+		padding 8px
+		background yellow
+		color black
+		border-radius 5px
+		font-weight bold
+
+	.links.hover
+		margin-top -10px
+
+	.tags
+		margin-top 15px
+		color dark_gray
+
+		a
+			color dark_gray
+
+.pagination
+	text-align center
+	margin 10px 0
+
+	a
+		background light_gray
+		border-radius 3px
+		padding 6px 10px
+		text-align center
+		text-decoration none
+
+		&:hover
+			background gray
+
+		&.current
+			background dark_gray!important
+			color light_gray
+
+/* Sub Content */
+#sub_content
+	background white
+
+	.inner
+		padding 30px 0
+
+	ul.columns
+		li
+			width 270px
+			line-height 22px
+			float left
+			margin-left 30px
+			margin-right 20px
+
+			&:last-child,&.last
+				margin-right 0
+
+			h2
+				font-size 24px
+				font-weight 400
+				margin-bottom 25px
+
+			p
+				margin-bottom 10px
+				color dark_gray
+
+			div
+				margin-bottom 10px
+
+				span
+					color black
+					font-weight 400
+					display block
+
+				p
+					margin-bottom 0
+
+		form.contact
+			.alert
+				color red
+
+			input,textarea
+				display block
+				border 1px solid gray
+				border-radius 5px
+				padding 8px
+				color gray
+				font 14px 'Helvetica Neue', Arial
+				width 250px
+				margin-bottom 15px
+
+			textarea
+				height 125px
+
+			.button
+				padding 8px
+				background yellow
+				color black
+				border-radius 5px
+				font-weight bold
+				border 0
+				width auto
+				cursor pointer
+
+svg
+	overflow hidden
+
+.entry
+	h1
+		padding-top 20px
+
+	a
+		color blue
+		text-decoration none
+
+		&:hover
+			text-decoration underline
+
+	hr
+		border 0 gray solid
+		border-top-width 1px
+		clear both
+		height 0
+
+	ol
+		list-style decimal
+
+	ul
+		list-style disc
+
+	li
+		margin-left 30px
+
+	p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset,figure
+		margin-bottom 20px
+
+.example-block
+	background light_gray
+	font-size 10px
+	overflow hidden
+	margin-bottom 20px
+	padding 10px 0
+	text-align center
+
+.grid-container > hr
+	margin-left 10px
+	margin-right 10px
+
+div[class*="push-"] section
+	background #ddeecc
+
+div[class*="pull-"] section
+	background #ffccdd
+
+.dynamic-px-width
+	display block
+
+.entry-content img
+	margin 0 0 1.5em
+
+.alignleft,img.alignleft
+	margin-right 1.5em
+	display inline
+	float left
+
+.alignright,img.alignright
+	margin-left 1.5em
+	display inline
+	float right
+
+.aligncenter,img.aligncenter
+	margin-right auto
+	margin-left auto
+	display block
+	clear both
+
+
+.wp-caption
+	margin-bottom 1.5em
+	text-align center
+	padding-top 5px
+
+	img
+		border 0 none
+		padding 0
+		margin 0
+
+	p.wp-caption-text
+		line-height 1.5
+		font-size 10px
+		margin 0
+
+.wp-smiley
+	margin 0!important
+	max-height 1em
+
+blockquote
+	.left, .right
+		margin-left 20px
+		text-align left
+		margin-right 0
+		width 33%
+
+	.left
+		float left
+
+	.right
+		float right
+
+.category-list li a
+	color dark_gray
+	font-family futura_medium
+	line-height 1.5
+	font-size 1.4em
+
+/*-------------------------------Content style ------------------*/
+.inner
+	padding-top 30px
+	padding-bottom 30px
+
+.home .inner
+	padding-bottom 0
+
+hr.big
+	border-width 0 0 6px
+	border-color dark_gray
+	margin 40px 0 5px
+
+.con-bg
+	background rgba(255,255,255,0.6)
+
+.slider img
+	width 100%
+
+img
+	max-width 100%
+	height auto
+
+.post-meta
+	color dark_gray
+	font-size 12px
+	margin-bottom 15px!important
+
+.post-date, .post-header
+	height 100px
+	display inline-block
+	vertical-align middle
+
+.post-date
+	background black
+	border-radius 100px
+	display inline-block
+	color gray
+	width 100px
+	text-align center
+	margin 10px
+
+.post-date-day
+	display inline-block
+	margin-top 22px
+	font-size 1.5em
+	line-height 1
+	font-weight bold
+
+.post-date-month
+	font-size .8em
+	text-transform uppercase
+
+.post-title
+	margin-bottom 0
+
+.promotion
+	background none repeat scroll 0 0 white
+	margin-bottom 20px
+	padding 10px
+	position relative
+	display table
+
+	p
+		font-size 1em
+
+.data
+	overflow hidden
+	
+	a:hover
+		text-decoration none
+
+	&:hover .overlay
+		display block
+		opacity 0.95
+		transition-duration .4s
+		background rgba(0,0,0,0.7)
+
+#options li
+	margin 10px
+	display inline-block
+
+	a.selected
+		color red
+
+#sidebar li
+	list-style none
+
+.gallery
+	box_margin = 30px
+	text-align center
+	padding (box_margin / 2)
+	margin 0
+
+	.element
+		margin (box_margin / 2)
+		display inline-block
+
+		a
+			text-decoration none
+			transition-property background, color
+			transition-duration 0.2s
+			display inline-block
+			list-style none outside none
+			padding 10px
+			box-sizing border-box
+			min-height 320px
+			width 220px
+
+			&:hover
+				background: blue
+
+				*
+					color white
+
+		img
+			width 100%
+
+		h2
+			margin 0
+			padding-top 5px
+			color dark_gray
+
+		p
+			margin-bottom 0
+			font-size 14px
+
+.gallery .element
+	@extends .box
+	padding 0
+
+.full-bg
+	background white
+
+.title
+	text-align center
+	background: none
+
+	h1
+		background none repeat scroll 0 0 white
+		display inline-block
+		padding-left 50px
+		padding-right 50px
+
+.orange, .orange-h
+	color orange
+
+.orange-h
+	font-family futura_medium
+	font-size 1.5em
+	font-weight normal
+
+.font-large
+	font-size 1.3em
+
+.promotion2
+	background light_gray
+	margin-bottom 90px
+	padding 10px 50px 75px
+	position relative
+	margin-top 20px
+	display table
+
+.promotion-img
+	bottom -60px
+	left 50%
+	margin-left -65px
+	position absolute
+
+.tagcloud a
+	background gray
+	border-radius 25px
+	display inline-block
+	padding 5px 10px
+	text-decoration none
+
+	&:hover
+		background dark_gray
+		color white
+
+.gal-info
+	background light_gray
+	padding 20px 10px
+	color dark_gray
+
+.gal-img
+	text-align center
+
+.gal-thumb
+	li
+		margin-bottom 35px
+		width auto
+		margin-left 0
+		list-style none
+
+	img
+		border 25px solid light_gray
+.welcome
+	background light_gray
+	text-align center
+	padding 10px 0
+	margin-bottom 30px
+	margin-top 10px
+	font-size 1.8em
+	font-family futura_medium
+
+.circle
+	width 160px
+	height 160px
+	background yellow
+	border-radius 100px
+	line-height 160px
+	text-align center
+	display block
+	margin-left auto
+	margin-right auto
+
+	&:hover
+		cursor pointer
+		transform rotate(360deg)
+		transition-duration .8s
+		background dark_gray
+		color white
+
+.copy
+	padding 20px 0
+
+.cols .footer-cols
+	width 25%
+	float left
+	padding 0 10px
+	box-sizing border-box
+
+.three .footer-cols
+	width 33%
+
+.portfolio-title
+	border-top 1px solid tan
+	border-bottom 1px solid tan
+	display block
+	margin 5px
+	margin-top 15px
+	padding-top 0
+
+.wp-showcase li
+	border 5px solid light_gray
+
+.portfolio-content
+	padding 30px
+
+.sider-info
+	background light_gray
+	padding 20px
+
+.contact *
+	text-align center
+
+.gal-slider
+	margin-top 20px
+
+.circle
+	text-align center
+
+.sponsor
+	background url('../img/sponsor-bg.jpg')
+	text-align center
+
+	a
+		margin 0 10px
+
+	.title
+		background url('../img/title-bg.png') repeat-x 0 32px
+
+		h1
+			background url('../img/sponsor-bg.jpg')
+
+#back-top
+	position fixed
+	bottom 30px
+	z-index 1000
+
+	a
+		display block
+		text-align center
+		font 11px/100% Arial, Helvetica, sans-serif
+		text-transform uppercase
+		text-decoration none
+		color gray
+		transition 1s
+
+	&:hover
+		color black
+
+i.promotion-btn
+	position absolute
+	top 0
+	left 1px
+	width 100%
+	height 100%
+	opacity 0
+	background none
+	border 2px solid black
+	transition-property all
+	transition-duration 275ms
+	transition-timing-function cubic-bezier(0.53,-0.67,0.73,0.74)
+	border-radius 1000px
+
+a:hover i.promotion-btn
+	opacity 1
+	transform scale(1.15)
+	transition-timing-function cubic-bezier(0.37,0.74,0.15,1.65)
+
+a.crl
+	width 100px
+	height 100px
+	background black
+	display inline-block
+	position absolute
+	border-radius 1000px
+	position absolute
+	bottom -50px
+	left 50%
+	transition-duration .3s
+	border-radius 1000px
+	margin-left -50px
+
+/* arrow icon (span tag) */
+#back-top
+	span
+		width 50px
+		height 50px
+		display block
+		margin-bottom 7px
+		background dark_gray url('../img/to-top.png') no-repeat center center
+		border-radius 100px
+		transition 1s
+
+	a:hover span
+		background-color dark_gray
+
+#about
+	margin: 10px 0 0
+	overflow: auto
+
+@import 'forms.styl'
+@import 'nav.styl'

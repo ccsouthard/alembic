@@ -1,22 +1,8 @@
 <?php
 ob_start();
 
-// install & activate theme plugins
-require_once ABSPATH . 'wp-admin/includes/plugin.php';
-preg_match('/\/[^\/]+$/', TEMPLATEPATH, $theme_dir_name);
-$theme_dir_name = $theme_dir_name[0];
-
-$plugins = array("cloudzoom", "wp-showcase");
-foreach ($plugins as $plugin){
-	if(!file_exists(ABSPATH . "wp-content/plugins/$plugin")){
-		echo symlink(
-			ABSPATH . "wp-content/themes$theme_dir_name/plugins/$plugin",
-			ABSPATH . "wp-content/plugins/$plugin"
-		);
-		activate_plugin("$plugin/$plugin.php");
-	}
-}
-
+include 'plugins/cloudzoom/cloudzoom.php';
+include 'plugins/wp-showcase/wp-showcase.php';
 
 $curr_theme = wp_get_theme(TEMPLATEPATH . '/style.css');
 $theme_version = trim( $curr_theme['Version'] );
@@ -68,11 +54,10 @@ add_action( 'admin_head', 's_admin_head' );
 
 //Add scripts to header
 if ( !is_admin() ) {
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'superfish', S_THEME_DIR.'/assets/js/superfish.js' );
-	wp_enqueue_script( 'jqueryui_custom', S_THEME_DIR.'/assets/js/jquery-ui-1.8.1.custom.min.js' );
-	wp_enqueue_script( 's', S_THEME_DIR.'/assets/js/main.js' );
-	wp_enqueue_script( 'comment-reply' );
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('jqueryui_custom', S_THEME_DIR.'/assets/js/jquery-ui-1.8.1.custom.min.js' );
+	wp_enqueue_script('s', S_THEME_DIR.'/assets/js/main.js' );
+	wp_enqueue_script('comment-reply' );
 }
 
 //Add support for WP 3.0 features, thumbnails etc

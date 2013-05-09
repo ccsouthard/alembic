@@ -1,22 +1,32 @@
-#portfolio-sidebar
-	z-index 2
-	position relative
+.wrap
+	text-align center
 
-	ul, li
-		margin: 0
-
-	.info li
-		display: list-item
+	> *
+		text-align left
 
 .wp-showcase
 	padding: 15px
-	margin: auto
-	width: 85%
+	//margin: auto
+	display inline-block
+	//min-width 85%
+
+.flexslider
+	margin 0
+
+	li
+		margin: 0
+
+	.slides img
+		width auto
+		max-width 100%
+		max-height 80%
+
 
 .flex-control-thumbs
 	img
 		width: 60px
 		border: 5px solid transparent
+		cursor pointer
 
 		&.flex-active
 			border: 5px solid #d0b312
@@ -27,25 +37,81 @@
 .wp-showcase-gallery li, .wp-showcase li
 	border: 5px solid transparent
 
-#portfolio-sidebar, .flexslider
-	display: inline-block
-	vertical-align: top
-
-#portfolio-sidebar, ul.slides
+#portfolio-sidebar, .flexslider div
+	background: white
 	padding: 5px
 	margin: 15px
-	background: white
 	box-shadow 0 0 10px black
 
 #portfolio-sidebar
-	width: 150px
-	margin-right -165px
+	z-index 2
+	position relative
 
-.flexslider
-	padding-left 180px
-
-	li
+	ul, li
 		margin: 0
+
+	.info li
+		display: list-item
+
+.slides
+	display inline-block
+
 
 .wp-showcase-gallery
 	background: none
+
+#image_tags, #image_title
+	margin 5px
+
+#image_title
+	font-size 25px
+	padding 0
+	font-weight 100
+	display inline-block
+
+#image_tags
+	float right
+	font-size 10px
+	color white
+	padding 9px 0
+
+	span
+		background black
+		border-radius 10px
+		padding 5px
+		margin 0 5px
+
+@media only screen and (min-width: 600px)
+	sidebar_width = 200px
+
+	#portfolio-sidebar, .flexslider
+		display: inline-block
+		vertical-align: top
+		box-sizing border-box
+
+	#portfolio-sidebar
+		width sidebar_width
+
+	.flexslider
+		padding-left sidebar_width + 45px
+		margin-left -(sidebar_width + 46px)
+		max-width 100%
+
+#portfolio-nav
+	text-align center
+
+	a
+		color #333
+
+		&:hover
+			text-decoration none
+			color lighten(#5c5a5a, 30%)
+
+.arrow
+	font-size 30px
+	vertical-align middle
+
+.grid
+	font-size 14px
+	font-weight normal
+	letter-spacing: -6px;

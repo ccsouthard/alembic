@@ -39,9 +39,6 @@ class WordpressShowcase {
 		add_action('wp_ajax_showcase_add_image_source', array(&$this, 'add_image_source'));
 		
 		load_plugin_textdomain('showcase', false, dirname(plugin_basename(__FILE__ ) ) .'/lang/' );
-		
-		require_once('wp-updates-plugin.php');
-		new WPUpdatesPluginUpdater('http://wp-updates.com/api/1/plugin', 117, plugin_basename(__FILE__) );
 	}
 	
 	function get_labels()
@@ -70,7 +67,7 @@ class WordpressShowcase {
 		'show_ui' => true,
 		'menu_position' => 100,
 		'supports' => array('title'),
-		'menu_icon' => plugins_url($this->plugin_folder . '/images/favicon.png')
+		'menu_icon' => S_THEME_DIR.'/plugins/wp-showcase/images/favicon.png'
 		)
 		);
 		
@@ -165,25 +162,25 @@ class WordpressShowcase {
 				}
 				
 				// Styles
-				wp_enqueue_style('colorbox', plugins_url($this->plugin_folder . '/scripts/colorbox/colorbox.css'), array(), '1.3' );
+				wp_enqueue_style('colorbox',S_THEME_DIR.'/plugins/wp-showcase/scripts/colorbox/colorbox.css', array(), '1.3' );
 				if ($options['theme'] ) {
-					wp_enqueue_style('colorbox-theme', plugins_url($this->plugin_folder . '/scripts/colorbox/themes/'. $options['theme'] .'.css'), array(), '1.0' );
+					wp_enqueue_style('colorbox-theme',S_THEME_DIR.'/plugins/wp-showcase/scripts/colorbox/themes/'. $options['theme'] .'.css', array(), '1.0' );
 				}
 				// Scripts
-				wp_register_script('colorbox', plugins_url($this->plugin_folder . '/scripts/colorbox/jquery.colorbox-min.js'), array('jquery'), '1.3' );
+				wp_register_script('colorbox', S_THEME_DIR.'/plugins/wp-showcase/scripts/colorbox/jquery.colorbox-min.js', array('jquery'), '1.3' );
 				wp_enqueue_script('colorbox' );
 			}
 			
 			// Styles
-			wp_enqueue_style('flexslider', plugins_url($this->plugin_folder . '/scripts/flexslider/flexslider.css'), array(), '1.8' );
-			wp_enqueue_style('wp-showcase', plugins_url($this->plugin_folder . '/styles/wp-showcase.css'), array(), '1.0' );
+			wp_enqueue_style('flexslider', S_THEME_DIR.'/plugins/wp-showcase/scripts/flexslider/flexslider.css', array(), '1.8' );
+			wp_enqueue_style('wp-showcase', S_THEME_DIR.'/plugins/wp-showcase/styles/wp-showcase.css', array(), '1.0' );
 			
 			// Scripts
-			wp_register_script('flexslider', plugins_url($this->plugin_folder . '/scripts/flexslider/jquery.flexslider.js'), array('jquery'), '1.8' );
-			wp_enqueue_script('flexslider' );
-			wp_register_script('wp-showcase', plugins_url($this->plugin_folder . '/scripts/wp-showcase.js'), array('colorbox','flexslider','jquery'), '1.0' );
-			wp_enqueue_script('wp-showcase' );
-			wp_enqueue_script('jquery' );
+			wp_register_script('flexslider', S_THEME_DIR.'/plugins/wp-showcase/scripts/flexslider/jquery.flexslider.js', array('jquery'), '1.8' );
+			wp_enqueue_script('flexslider');
+			wp_register_script('wp-showcase', S_THEME_DIR.'/plugins/wp-showcase/scripts/wp-showcase.js', array('colorbox','flexslider','jquery'), '1.0' );
+			wp_enqueue_script('wp-showcase');
+			wp_enqueue_script('jquery');
 		}
 	}
 	
@@ -443,7 +440,7 @@ class WordpressShowcase {
 		global $post;
 		
 		if (isset($post->post_type) && $post->post_type == 'showcase_gallery' || (isset($_GET['page']) && $_GET['page'] == 'showcase-settings')) {
-			wp_enqueue_style('wp-showcase-admin', plugins_url($this->plugin_folder . '/styles/wp-showcase-admin.css'));
+			wp_enqueue_style('wp-showcase-admin', S_THEME_DIR.'/plugins/wp-showcase/styles/wp-showcase-admin.css');
 		}
 	}
 	
@@ -452,11 +449,11 @@ class WordpressShowcase {
 		global $post;
 		
 		if ((isset($post->post_type) && $post->post_type == 'showcase_gallery') || (isset($_GET['page']) && $_GET['page'] == 'showcase-settings')) {
-			wp_register_script('showcase_plupload', plugins_url($this->plugin_folder . '/scripts/plupload/plupload.full.js'), array('jquery') );
+			wp_register_script('showcase_plupload', S_THEME_DIR.'/plugins/wp-showcase/scripts/plupload/plupload.full.js', array('jquery') );
 			wp_enqueue_script('showcase_plupload' );
-			wp_register_script('jquery-simplemodal', plugins_url($this->plugin_folder . '/scripts/jquery.simplemodal.1.4.1.min.js'), array('jquery') );
+			wp_register_script('jquery-simplemodal', S_THEME_DIR.'/plugins/wp-showcase/scripts/jquery.simplemodal.1.4.1.min.js', array('jquery') );
 			wp_enqueue_script('jquery-simplemodal' );
-			wp_register_script('wp-showcase-admin', plugins_url($this->plugin_folder . '/scripts/showcase-admin.js'), array('showcase_plupload','jquery','jquery-ui-sortable') );
+			wp_register_script('wp-showcase-admin', S_THEME_DIR.'/plugins/wp-showcase/scripts/showcase-admin.js', array('showcase_plupload','jquery','jquery-ui-sortable') );
 			wp_enqueue_script('wp-showcase-admin' );
 			wp_enqueue_script('jquery');
 			wp_enqueue_script('jquery-ui-sortable');
@@ -466,15 +463,21 @@ class WordpressShowcase {
 		$galleries = get_posts(array('post_type' => 'showcase_gallery', 'posts_per_page' => -1) );
 		$list = array();
 		foreach($galleries as $gallery ){
-			$list[] = array('id' => $gallery->ID,
-			'name' => $gallery->post_title
+			$list[] = array(
+				'id' => $gallery->ID,
+				'name' => $gallery->post_title
 			);
 		}
-		wp_localize_script('jquery', 'wp_showcase', array('post_id' => (isset($post->ID)) ? $post->ID : '',
-		'plugin_folder' => plugins_url($this->plugin_folder . '/'),
-		'nonce' => wp_create_nonce('wp_showcase'),
-		'galleries' => json_encode($list)
-		));
+		wp_localize_script(
+			'jquery',
+			'wp_showcase',
+			array(
+				'post_id' => (isset($post->ID)) ? $post->ID : '',
+				'plugin_folder' =>  S_THEME_DIR.'/plugins/wp-showcase/',
+				'nonce' => wp_create_nonce('wp_showcase'),
+				'galleries' => json_encode($list)
+			)
+		);
 	}
 	
 	function image_sources_header()
@@ -499,9 +502,6 @@ class WordpressShowcase {
 				(isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on" ) ? $protocol = "https://" : $protocol = "http://";
 				$callback =  $protocol . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 				$callback = substr($callback, 0, strpos($callback, $source) + strlen($source));
-				
-				$source_dir = dirname(__FILE__) .'/includes/sources/';
-				include_once($source_dir . $source .'.php');
 				
 				$var = 'showcase_source_'. $source;
 				$obj = new $var($auth_token, $auth_token_secret);
@@ -718,6 +718,7 @@ class WordpressShowcase {
 			}
 		}
 		?>
+	<!--
 		<tr valign="top" class="showcase_non_manual">
 		<th scope="row">- <?php _e('Number of Images', 'showcase');
 		?></th>
@@ -962,6 +963,7 @@ class WordpressShowcase {
 		<span class="description"><?php _e('Pause the slideshow when hovering over slider, then resume when no longer hovering', 'showcase');
 		?></span></label></td>
 		</tr>
+	-->
 		</table>
 		<?php
 	}
@@ -1020,6 +1022,13 @@ class WordpressShowcase {
 		<div id="showcase-edit-image">
 		<p><strong>Edit Image</strong></p>
 		<table class="form-table">
+		<tr valign="top">
+		<th scope="row"><?php _e('Image Title', 'showcase');
+		?></th>
+		<td><input type="text" name="showcase_meta_title" id="showcase_meta_title" value="" class="regular-text" /><br />
+		<span class="description"><?php _e('e.g. Example title', 'showcase');
+		?></span></td>
+		</tr>
 		<tr valign="top">
 		<th scope="row"><?php _e('Image Caption', 'showcase');
 		?></th>
@@ -1273,15 +1282,12 @@ class WordpressShowcase {
 		$response['message'] = '';
 		
 		$meta = wp_get_attachment_metadata($_POST['id']);
-		if (isset($meta['wp_showcase']['caption'])) {
-			$response['caption'] = $meta['wp_showcase']['caption'];
+		foreach(array('caption', 'link', 'alt', 'title') as $field){
+			if (isset($meta['wp_showcase'][$field])) {
+				$response[$field] = $meta['wp_showcase'][$field];
+			}
 		}
-		if (isset($meta['wp_showcase']['link'])) {
-			$response['link'] = $meta['wp_showcase']['link'];
-		}
-		if (isset($meta['wp_showcase']['alt'])) {
-			$response['alt'] = $meta['wp_showcase']['alt'];
-		}
+
 		$response['message'] = 'success';
 		
 		echo json_encode($response);
@@ -1299,9 +1305,11 @@ class WordpressShowcase {
 		$response['message'] = '';
 		
 		$meta = wp_get_attachment_metadata($_POST['id']);
-		$meta['wp_showcase'] = array('caption' => strip_tags($_POST['caption']),
-		'link' => strip_tags($_POST['link']),
-		'alt' => strip_tags($_POST['alt'])
+		$meta['wp_showcase'] = array(
+			'title' => strip_tags($_POST['title']),
+			'caption' => strip_tags($_POST['caption']),
+			'link' => strip_tags($_POST['link']),
+			'alt' => strip_tags($_POST['alt'])
 		);
 		wp_update_attachment_metadata($_POST['id'], $meta );
 		
@@ -1370,18 +1378,19 @@ class WordpressShowcase {
 	
 	function get_usefullinks()
 	{
-		$links = array(array('label' => __('Website:', 'showcase'),
-		'url'   => 'http://showcase.dev7studios.com',
-		'title' => 'Showcase'
-		),
-		array('label' => __('Created by:', 'showcase'),
-		'url'   => 'http://dev7studios.com',
-		'title' => 'Dev7studios'
-		),
-		array('label' => __('Support:', 'showcase'),
-		'url'   => 'http://support.dev7studios.com/discussions',
-		'title' => 'Support Forums'
-		)
+		$links = array(
+			array('label' => __('Website:', 'showcase'),
+				'url'   => 'http://showcase.dev7studios.com',
+				'title' => 'Showcase'
+			),
+			array('label' => __('Created by:', 'showcase'),
+				'url'   => 'http://dev7studios.com',
+				'title' => 'Dev7studios'
+			),
+			array('label' => __('Support:', 'showcase'),
+				'url'   => 'http://support.dev7studios.com/discussions',
+				'title' => 'Support Forums'
+			)
 		);
 		return apply_filters('wp_showcase_useful_links', $links );
 	}
@@ -1420,12 +1429,25 @@ class WordpressShowcase {
 		$output = '';
 		$options = get_post_meta($id, 'showcase_settings', true );
 		$attachments = $this->get_gallery_images($id );
-
 		if ($attachments) {
 			do_action('wp_showcase_before_showcase');
 			$output .= '
 			<div id="wp-showcase-'. $id .'" class="wp-showcase'. (($options['enable_lightbox'] == 'on') ? ' enable-lightbox' : '') .'">
 			<div id="portfolio-sidebar">
+				<div id="portfolio-nav">';
+					$next_post = get_adjacent_post();
+					if (!empty( $next_post )){
+						$output .= '<a class="arrow" href="'.get_permalink($next_post->ID).'">←</a>';
+					}
+					$output .= '<a class="grid" href="/current-artists">⡇⡇⡇⡇⡇⡇</a>';
+
+					$next_post = get_adjacent_post(false, "", false);
+					if (!empty( $next_post )){
+						$output .= '<a class="arrow" href="'.get_permalink($next_post->ID).'">→</a>';
+					}
+
+			$output .= '
+				</div>
 				<h1 class="portfolio-title">' . get_the_title($post->ID) . '</h1>
 				<ul class="info">
 					<li>' . get_post_meta($post->ID, '_place', true) . '</li>
@@ -1433,121 +1455,65 @@ class WordpressShowcase {
 					<li>' . get_post_meta($post->ID, '_price', true) . '</li>
 				</ul>
 				<ol id="controlsContainer"></ol>
-			';
+			</div>';
 
-			$output .= '</div>';
+			do_action('wp_showcase_before_slider');
+			$output .= '<div class="flexslider"><div><h1 id="image_title"></h1><span id="image_tags"></span><ul class="slides">';
+			foreach($attachments as $attachment ){
+				$image_full = $attachment['full'];
+				$meta = $attachment['meta'];
 
-			
-			// Slideshow
-			if ($options['show_slideshow'] == 'on' || $options['gallery_layout'] == 'slider') {
-				do_action('wp_showcase_before_slider');
-				$output .= '<div class="flexslider cf"><ul class="slides">';
-				foreach($attachments as $attachment ){
-					$image_full = $attachment['full'];
-					$meta = $attachment['meta'];
+				$thumb_src = $image_full;
 
-					$thumb_src = $image_full;
-					
-					//var_dump($attachment);
-
-					$resized_image = $this->resize_image($attachment['id'], '', 150, 150, true );
-					if (is_wp_error($resized_image) ) {
-						$output .= '<p>Error: '. $resized_image->get_error_message() .'</p>';
-					} else {
-						$thumb_src = $resized_image['url'];
-					}
-					
-					$output .= '<li data-thumb="' . $thumb_src . '" data-name="' . get_the_title($attachment->ID) . '"><img src="'. $image_full .'"';
-					if (isset($meta['wp_showcase']['alt']) && $meta['wp_showcase']['alt'] ) {
-						$output .= ' alt="'. $meta['wp_showcase']['alt'] .'"';
-					}
-					$output .= ' />';
-					if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) ||
-					(isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link']) ) $output .= '<p class="flex-caption">';
-					if(isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption'] ) {
-						$output .= $meta['wp_showcase']['caption'] .' ';
-					}
-					if (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link'] ) {
-						$output .= '<a href="'. $meta['wp_showcase']['link'] .'">'. $meta['wp_showcase']['link'] .'</a>';
-					}
-					if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) ||
-					(isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link']) ) $output .= '</p>';
-					$output .= '</li>';
+				$tags = array();
+				foreach(get_the_mediatags($attachment['id']) as $tag){
+					$tags[] = $tag->name;
 				}
-				$output .= '</ul></div>';
-				do_action('wp_showcase_after_slider');
+
+				$resized_image = $this->resize_image($attachment['id'], '', 150, 150, true );
+				if (is_wp_error($resized_image) ) {
+					$output .= '<p>Error: '. $resized_image->get_error_message() .'</p>';
+				} else {
+					$thumb_src = $resized_image['url'];
+				}
+				
+				$output .= '<li data-tags="' . htmlspecialchars(json_encode($tags)) . '" data-thumb="' . $thumb_src . '" data-title="' . $meta['wp_showcase']['title'] . '"><img class="cloudzoom" data-cloudzoom="zoomPosition:\'inside\', zoomOffsetX:0" src="'. $image_full .'"';
+				if (isset($meta['wp_showcase']['alt']) && $meta['wp_showcase']['alt']){
+					$output .= ' alt="'. $meta['wp_showcase']['alt'] .'"';
+				}
+				$output .= ' />';
+				if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) || (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link'])){
+					$output .= '<p class="flex-caption">';
+				}
+				if(isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']){
+					$output .= $meta['wp_showcase']['caption'] .' ';
+				}
+				if (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link']){
+					$output .= '<a href="'. $meta['wp_showcase']['link'] .'">'. $meta['wp_showcase']['link'] .'</a>';
+				}
+				if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) || (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link'])){
+					$output .= '</p>';
+				}
+				$output .= '</li>';
 			}
+			$output .= '</ul></div></div>';
+			do_action('wp_showcase_after_slider');
 
 			$output .= '</div>';
 			do_action('wp_showcase_after_showcase');
 			
-			// Flexslider JS
-			if ($options['gallery_layout'] == 'slider' || $options['show_slideshow'] == 'on') {
-				
-				$output .= '<script type="text/javascript">' ."\n";
-				$output .= 'jQuery(window).load(function(){' ."\n";
-				$output .= '    jQuery("#wp-showcase-'. $id .' .flexslider").flexslider({' ."\n";
-				if (isset($options['slider_animation'])) {
-					$output .= '        animation: "'. $options['slider_animation'].'",' ."\n";
-				}
-				if (isset($options['slider_direction'])) {
-					$output .= '        direction: "'.$options['slider_direction'].'",' ."\n";
-				}
-				if (isset($options['slider_animate_duration'])) {
-					$output .= '        animationSpeed: '.$options['slider_animate_duration'].',' ."\n";
-				}
-				if (isset($options['slider_slideshow'])) {
-					$output .= '        slideshow: '.(($options['slider_slideshow'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				if (isset($options['slider_slideshow_speed'])) {
-					$output .= '        slideshowSpeed: '.$options['slider_slideshow_speed'].',' ."\n";
-				}
-				if (isset($options['slider_direction_nav'])) {
-					$output .= '        directionNav: '.(($options['slider_direction_nav'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				if (isset($options['slider_control_nav'])) {
-					$output .= "        controlNav: 'thumbnails',\n";
-					$output .= "        controlsContainer: '#controlsContainer',\n";
-					//$output .= "        smoothHeight: true,\n";
-				}
-				if (isset($options['slider_keyboard_nav'])) {
-					$output .= "        keyboard: true,\n";
-				}
-				if (isset($options['slider_prev_text'])) {
-					$output .= '        prevText: "'.$options['slider_prev_text'].'",' ."\n";
-				}
-				if (isset($options['slider_next_text'])) {
-					$output .= '        nextText: "'.$options['slider_next_text'].'",' ."\n";
-				}
-				if (isset($options['slider_pause_play'])) {
-					$output .= '        pausePlay: '.(($options['slider_pause_play'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				if (isset($options['slider_pause_text'])) {
-					$output .= '        pauseText: "'.$options['slider_pause_text'].'",' ."\n";
-				}
-				if (isset($options['slider_play_text'])) {
-					$output .= '        playText: "'.$options['slider_play_text'].'",' ."\n";
-				}
-				if (isset($options['slider_random'])) {
-					$output .= '        randomize: '.(($options['slider_random'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				if (isset($options['slider_start_slide'])) {
-					$output .= '        slideToStart: '.$options['slider_start_slide'].',' ."\n";
-				}
-				if (isset($options['slider_pause_action'])) {
-					$output .= '        pauseOnAction: '.(($options['slider_pause_action'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				if (isset($options['slider_pause_hover'])) {
-					$output .= '        pauseOnHover: '.(($options['slider_pause_hover'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				$output .= '    });' ."\n";
-				$output .= '});' ."\n";
-				$output .= '</script>' ."\n";
-				
-			}
-			
+			$output .= "
+			<script type=\"text/javascript\">
+				jQuery(window).load(function(){
+					jQuery(\"#wp-showcase-". $id ." .flexslider\").flexslider({
+						controlNav: 'thumbnails',
+						controlsContainer: '#controlsContainer',
+						keyboard: true
+					});
+				});
+			</script>";
+
 		}
-		
 		return $output;
 	}
 	
@@ -1632,7 +1598,7 @@ class WordpressShowcase {
 	
 	function mce_add_plugin($plugin_array )
 	{
-		$plugin_array['showcase'] = plugins_url($this->plugin_folder . '/scripts/mce-showcase/showcase.js');
+		$plugin_array['showcase'] =  S_THEME_DIR.'/plugins/wp-showcase/scripts/mce-showcase/showcase.js';
 		return $plugin_array;
 	}
 	
