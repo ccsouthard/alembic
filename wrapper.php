@@ -20,21 +20,15 @@ ob_clean();
 				</a>
 				<?php s_menu(); ?>
 				<ul class="social">
-					<?php if(get_option('s_add_social1', 'true') == 'true' && get_option('s_social_link1') != ''): ?>
-						<li>
-							<a href="<?php echo stripslashes(get_option('s_social_link1')); ?>" style="background-image: url(<?php echo stripslashes(get_option('s_social_icon1')); ?>) ;">&nbsp;</a>
-						</li>
-					<?php endif; ?>
-					<?php if(get_option('s_add_social2', 'true')=='true' && get_option('s_social_link2')!=''): ?>
-						<li>
-							<a href="<?php echo stripslashes(get_option('s_social_link2')); ?>" style="background-image: url(<?php echo stripslashes(get_option('s_social_icon2')); ?>);">&nbsp;</a>
-						</li>
-					<?php endif; ?>
-					<?php if(get_option('s_add_social3', 'true')=='true' && get_option('s_social_link3')!=''): ?>
-						<li>
-							<a href="<?php echo stripslashes(get_option('s_social_link3')); ?>" style="background-image: url(<?php echo stripslashes(get_option('s_social_icon3')); ?>);">&nbsp;</a>
-						</li>
-					<?php endif; ?>
+					<li>
+						<a href="<?php echo stripslashes(get_option('s_social_link1')); ?>" id="social-1">&nbsp;</a>
+					</li>
+					<li>
+						<a href="<?php echo stripslashes(get_option('s_social_link2')); ?>" id="social-2">&nbsp;</a>
+					</li>
+					<li>
+						<a href="<?php echo stripslashes(get_option('s_social_link3')); ?>" id="social-3">&nbsp;</a>
+					</li>
 				</ul>
 			</nav>
 		</header>
