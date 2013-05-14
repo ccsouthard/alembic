@@ -1,119 +1,28 @@
-.wp-showcase {
-  padding: 15px;
-  display: inline-block;
-}
-.flexslider {
-  margin: 0;
-}
-.flexslider li {
-  margin: 0;
-}
-.flexslider .slides img {
-  width: auto;
-  max-width: 100%;
-  max-height: 80%;
-}
-.flex-control-thumbs img {
-  width: 60px;
-  border: 5px solid transparent;
-  cursor: pointer;
-}
-.flex-control-thumbs img.flex-active {
-  border: 5px solid #d0b312;
-}
-#controlsContainer {
-  margin: 0;
-}
-.wp-showcase-gallery li,
-.wp-showcase li {
-  border: 5px solid transparent;
-}
-#portfolio-sidebar,
-.flexslider div {
-  background: #fff;
-  padding: 5px;
-  margin: 15px;
-  box-shadow: 0 0 10px #000;
-}
-#portfolio-sidebar {
-  z-index: 2;
-  position: relative;
-}
-#portfolio-sidebar ul,
-#portfolio-sidebar li {
-  margin: 0;
-}
-#portfolio-sidebar .info li {
-  display: list-item;
-}
-.slides {
-  display: inline-block;
-}
-.wp-showcase-gallery {
-  background: none;
-}
-#image_tags,
-#image_title {
-  margin: 5px;
-}
-#image_title {
-  font-size: 25px;
-  padding: 0;
-  font-weight: 100;
-  display: inline-block;
-}
-#image_tags {
-  float: right;
-  font-size: 10px;
-  color: #fff;
-  padding: 9px 0;
-}
-#image_tags span {
-  background: #000;
-  border-radius: 10px;
-  padding: 5px;
-  margin: 0 5px;
-}
-@media only screen and (min-width: 600px) {
-  #portfolio-sidebar,
-  .flexslider {
-    display: inline-block;
-    vertical-align: top;
-    box-sizing: border-box;
-  }
-  #portfolio-sidebar {
-    width: 200px;
-  }
-  .flexslider {
-    padding-left: 245px;
-    margin-left: -246px;
-    max-width: 100%;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .wrap {
-    text-align: center;
-  }
-  .wrap > * {
-    text-align: left;
-  }
-}
-#portfolio-nav {
-  text-align: center;
-}
-#portfolio-nav a {
-  color: #333;
-}
-#portfolio-nav a:hover {
-  text-decoration: none;
-  color: #8d8b8b;
-}
-.arrow {
-  font-size: 30px;
-  vertical-align: middle;
-}
-.grid {
-  font-size: 14px;
-  font-weight: normal;
-  letter-spacing: -6px;
-}
+.wp-showcase{padding:15px;display:inline-block}
+.flexslider{margin:0;}
+.flexslider li{margin:0}
+.flexslider .slides img{width:auto;max-width:100%;max-height:80%}
+.flex-control-thumbs img{width:60px;border:5px solid transparent;cursor:pointer;}
+.flex-control-thumbs img.flex-active{border:5px solid #d0b312}
+#controlsContainer{margin:0}
+.wp-showcase-gallery li,.wp-showcase li{border:5px solid transparent}
+#portfolio-sidebar,.flexslider div{background:#fff;padding:5px;margin:15px;box-shadow:0 0 10px #000}
+#portfolio-sidebar{z-index:2;position:relative;}
+#portfolio-sidebar ul,#portfolio-sidebar li{margin:0}
+#portfolio-sidebar .info li{display:list-item}
+.slides{display:inline-block}
+.wp-showcase-gallery{background:none}
+#image_tags,#image_title{margin:5px}
+#image_title{font-size:25px;padding:0;font-weight:100;display:inline-block}
+#image_tags{float:right;font-size:10px;color:#fff;padding:9px 0;}
+#image_tags span{background:#000;border-radius:10px;padding:5px;margin:0 5px}
+@media only screen and (min-width: 600px){#portfolio-sidebar,.flexslider{display:inline-block;vertical-align:top;box-sizing:border-box}
+#portfolio-sidebar{width:200px}
+.flexslider{padding-left:245px;margin-left:-246px;max-width:100%}
+}@media only screen and (max-width: 600px){.wrap{text-align:center;}
+.wrap > *{text-align:left}
+}#portfolio-nav{text-align:center;}
+#portfolio-nav a{color:#333;}
+#portfolio-nav a:hover{text-decoration:none;color:#8d8b8b}
+.arrow{font-size:30px;vertical-align:middle}
+.grid{font-size:14px;font-weight:normal;letter-spacing:-6px}
