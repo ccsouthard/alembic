@@ -36,12 +36,16 @@ body
 
 	.entry
 		@extends .box
-		margin 10px
+		margin 0
 
 .news .entry
 	//to make the circle holding the date overlap properly
 	padding-top 30px
 	margin-top -30px
+
+.wrap .sponsors
+	background: #fff
+	padding: 30px
 
 a:link,a:visited
 	color dark_gray
@@ -750,3 +754,7 @@ a.crl
 
 @import 'forms.styl'
 @import 'nav.styl'
+
+#options li, .wrap h2
+	&:first-child
+		margin-left 20px

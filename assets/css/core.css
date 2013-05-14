@@ -84,25 +84,22 @@ body.home {
   background: #fff;
   padding: 10px;
 }
-
 .wrap {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
 .wrap .entry {
-  margin: 0px;
+  margin: 0;
 }
 .news .entry {
   padding-top: 30px;
   margin-top: -30px;
 }
-
 .wrap .sponsors {
   background: #fff;
-  padding: 30px; }
+  padding: 30px;
 }
-
 a:link,
 a:visited {
   color: #484747;
@@ -925,7 +922,7 @@ input[type=button]:hover {
   resize: vertical;
 }
 form * {
-  font-family: "Sans-Serif";
+  font-family: 'Sans-Serif';
   text-transform: uppercase;
   margin: 0;
   padding: 0;
@@ -1095,21 +1092,12 @@ nav.fixed {
   left: 0;
   width: 100%;
   background: rgba(0,0,0,0.8);
-  
-// Lazy Additions to check and learn GH
-
-#options li {
-margin-left: 20px;
-}
-
-h2.catSort {
-margin-left: 30px;
-}
-
-// things to do: I need to give h2 a class="catSort"
-
   z-index: 1000;
 }
 .sf-sub-indicator {
   display: none;
+}
+#options li:first-child,
+.wrap h2:first-child {
+  margin-left: 20px;
 }
