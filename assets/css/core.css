@@ -965,52 +965,6 @@ select.responsiveMenuSelect {
   width: auto;
   margin: 10px;
 }
-.social {
-  border-left: 2px dotted #fff;
-}
-.social a {
-  height: 35px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: left top;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  -ms-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  text-indent: -10000px;
-}
-.social a:hover {
-  background-position: 0 -40px;
-}
-#social-1 {
-  width: 35px;
-  background-image: url("./img/tw.png");
-}
-#social-2 {
-  width: 20px;
-  background-image: url("./img/pin.png");
-}
-#social-3 {
-  width: 14px;
-  background-image: url("./img/fb.png");
-}
-#logo,
-nav > ul {
-  padding: 10px 20px;
-  vertical-align: middle;
-  display: inline-block;
-}
-@media only screen and (max-width: 500px) {
-  #logo,
-  nav {
-    display: block;
-    text-align: center;
-  }
-  .social {
-    border-left: none;
-  }
-}
 nav a {
   padding: 0;
   font-size: 30px;
@@ -1107,6 +1061,55 @@ nav.fixed {
 }
 .sf-sub-indicator {
   display: none;
+}
+#logo,
+nav > ul {
+  padding: 10px 20px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.social {
+  border-left: 2px dotted #fff;
+}
+.social li:hover {
+  background: none;
+}
+.social a {
+  height: 35px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: left top;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  text-indent: -10000px;
+}
+.social a:hover {
+  background-position: 0 -40px;
+}
+#social-1 {
+  width: 35px;
+  background-image: url("./img/tw.png");
+}
+#social-2 {
+  width: 20px;
+  background-image: url("./img/pin.png");
+}
+#social-3 {
+  width: 14px;
+  background-image: url("./img/fb.png");
+}
+@media only screen and (max-width: 500px) {
+  #logo,
+  nav {
+    display: block;
+    text-align: center;
+  }
+  .social {
+    border-left: none;
+  }
 }
 #options li:first-child,
 .wrap h2:first-child {
