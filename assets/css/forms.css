@@ -5,6 +5,19 @@ input[type=submit]:hover,input[type=button]:hover{background:#333;transition-dur
 #cf_custom div.wpcf7-validation-errors{margin-top:50px}
 #cf_message{resize:vertical}
 
+// cf background and h2
+
+.postid-38 .wrap .entry {
+margin: 0px;
+background: #fbd555;
+}
+
+.postid-38 h2 {
+font-size: 3em;
+padding-top: 20px;
+}
+
+
 #cf_name, #cf_email, #cf_dropdown, #cf_message {
 padding: 35px;
 margin: 5px 0;
