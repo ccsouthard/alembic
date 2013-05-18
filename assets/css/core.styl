@@ -37,12 +37,13 @@ body
 
 	.entry
 		@extends .box
-		margin 0
+		margin 15px 0
 
-.news .entry
-	//to make the circle holding the date overlap properly
-	padding-top 30px
-	margin-top -30px
+	.entry:first-child
+		margin-top 0
+
+	.entry:last-child
+		margin-bottom 0
 
 .sponsors
 	background: #fff

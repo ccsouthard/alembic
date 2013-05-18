@@ -19,8 +19,9 @@ body{min-width:300px;margin:0;padding:0;}
 body.home{background:url("data:image/gif;base64,R0lGODlhAQCHAYACANCzEgAAACwAAAAAAQCHAQACEYyPqcvtD6OctNqLs968+x8VADs=") repeat-x top}
 .box,.wrap .entry,.gallery .element{-webkit-box-shadow:0 0 5px 3px rgba(0,0,0,0.4);box-shadow:0 0 5px 3px rgba(0,0,0,0.4);background:#fff;padding:10px}
 .wrap{max-width:1000px;margin-left:auto;margin-right:auto;}
-.wrap .entry{margin:0}
-.news .entry{padding-top:30px;margin-top:-30px}
+.wrap .entry{margin:15px 0}
+.wrap .entry:first-child{margin-top:0}
+.wrap .entry:last-child{margin-bottom:0}
 .sponsors{background:#fff;padding:30px}
 a:link,a:visited{color:#484747}
 #header{display:block;height:125px;background:#fff;z-index:-999;}
