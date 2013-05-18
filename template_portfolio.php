@@ -3,12 +3,7 @@
 	wp_enqueue_script('isotope', S_THEME_DIR.'/assets/js/jquery.isotope.min.js');
 ?>
 <section>
-	<?php if(!get_the_title()==''){echo '<h2 class="catSort">'.get_the_title().'</h2>';}?>
-	<?php/*
-		if(have_posts()) : while(have_posts()) : the_post(); 
-			the_content();
-		endwhile; endif;
-	*/?>
+	<?php if(!get_the_title()==''){echo '<h1>'.get_the_title().'</h1>';}?>
 	<?php
 		$portfolio_category = get_terms('portfolio_cat');
 		if($portfolio_category):
@@ -27,10 +22,13 @@
 	</ul>
 	<?php
 	endif;
-	require_once 'functions/shortcodes.php';
-	echo shortcode_portfilio()
+	if(have_posts()){
+		while(have_posts()){
+			the_post();
+			the_content();
+		} 
+	}
 	?>
-
 </section>
 <script>
 	jQuery(function() {
