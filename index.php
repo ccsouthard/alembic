@@ -8,15 +8,13 @@ if(have_posts()) : while(have_posts()) : the_post();
 ?>
 	<section class="entry group">
 		<p class="post-date">
-			<span class="post-date-day"><?php the_time('d'); ?></span>
+			<span class="day"><?php the_time('d'); ?></span>
 			<br>
-			<span class="post-date-month"><?php the_time('F'); ?></span>
+			<span class="month"><?php the_time('F'); ?></span>
 		</p>
-		<div class="post-header">
-			<h2 class="post-title">
-				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-			</h2>
-		</div>
+		<h1 class="post-title">
+			<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+		</h1>
 		<?php the_content(); ?>
 	</section>
 <?php
