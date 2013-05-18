@@ -21,7 +21,6 @@ body
 	min-width 300px
 	margin 0
 	padding 0
-	border-top 10px solid gold
 
 	&.home
 		background url('./img/top-bg.gif') repeat-x top
@@ -760,3 +759,14 @@ a.crl
 #options li, .wrap h2
 	&:first-child
 		margin-left 20px
+
+//better clear-fix
+.group:before, .group:after
+	content:""
+	display:table
+
+.group:after
+	clear:both
+
+.group
+	zoom:1 // For IE 6/7 (trigger hasLayout)

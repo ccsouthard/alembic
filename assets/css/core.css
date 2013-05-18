@@ -205,3 +205,6 @@ nav.fixed{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,0.8);z-in
 @media only screen and (max-width: 500px){#logo,nav{display:block;text-align:center}
 .social{border-left:none}
 }#options li:first-child,.wrap h2:first-child{margin-left:20px}
+.group:before,.group:after{content:"";display:table}
+.group:after{clear:both}
+.group{zoom:1}
