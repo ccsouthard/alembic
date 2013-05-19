@@ -1,6 +1,4 @@
 <?php
-
-//Highlight
 function shortcode_highlight($atts, $content=null){
 	extract(
 		shortcode_atts(
@@ -18,7 +16,6 @@ function shortcode_highlight($atts, $content=null){
 }
 add_shortcode('hilite', 'shortcode_highlight');
 
-//portfolio
 function shortcode_portfilio($atts){
 	$return = '<div class="gallery">';
 
@@ -67,14 +64,12 @@ function shortcode_portfilio($atts){
 					<img class="image align-left" alt="" src="'. $image_url.'" />
 					<h2>'. get_the_title().'</h2>
 					' . $caption . '
-				</a>';					
+				</a>';
 			}
 
 			$return .= '</div>';
 		}
 		$return .= '</div>';
-	} else { //If no posts are present 
-
 	}
 
 	wp_reset_query(); 
@@ -82,6 +77,4 @@ function shortcode_portfilio($atts){
 }
 
 add_shortcode('portfolio', 'shortcode_portfilio');
-
-
 ?>			
