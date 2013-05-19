@@ -213,125 +213,20 @@ nav.fixed{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,0.8);z-in
 .group:before,.group:after{content:"";display:table}
 .group:after{clear:both}
 .group{zoom:1}
-/*cf_custom contact form*/
- 
- #cf_custom{
- width:100%;
- height:500px;
- margin: auto;
- }
- 
- .cf_custom {
- border: 0 none !important ;
- outline: 0 none;
- display: block;
- text-transform: uppercase;
- float: left;
- }
- 
- #cf_name, #cf_email, #cf_dropdown, #cf_message{
- color: #111111 !important ;
- background: #fbd555;
- font-family:'Futuramc', sans-serif;
- font-size: 1.1em;
- text-transform: uppercase;
- font-weight: 900;
- margin: 10px;
- }
- 
- #cf_name, #cf_email, #cf_dropdown{
- width:300px;
- height:50px;
- }
- 
- #cf_name, #cf_email{
- padding:0 10px !important;
- }
- 
- #cf_email{
- margin-right:0px;
- }
- 
- #cf_dropdown{
- padding:4px 0 4px 10px !important;
- width:300px;
- height:50px;
- }
- 
- #cf_message{
- max-width:940px;
- width:940px;
- height:340px;
- }
- 
- #cf_submit{
- background:transparent;
- color:#000;
- font-size:45px;
- width:160px;
- display:block;
- position:relative;
- left:50%;
- margin-left:-80px;
- 
- }
- #cf_submit:hover{
- color:#666;
- }
- 
- #cf_custom span.wpcf7-not-valid-tip {
- left: 70%;
- margin-top: 50px;
- position: relative;
- top: 20%;
- }
- 
- #cf_custom div.wpcf7-validation-errors{
- margin-top:50px;
- }
- 
-// Misc Style Tweaks & Experiments
-
-.wrapper {
-			margin-left: auto;
-	   		margin-right: auto;
-}
-
-#sponsor {
-       background-color:#fff;
-	       padding:20px 0;
-	       text-align:center;
-	       max-width: 2000px;
-       margin-left: auto;
-       margin-right: auto;
-}
-
-.sponsorTitle {
-			   margin: 20px;
-}
-
-
-//flexslider
-.flexslider .slides {
-        zoom: 1;
-        max-width: 900px;
-}
-
-
-//artist statement style
-
-.promotion2 {
-    		background: #fff;
-    		-moz-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.1);
-    		-webkit-box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.1);
-    		box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.1);
-    		display: block;
-    		font: 1em "futuramc", sans-serif;
-    		color: #111;
-    		text-decoration: none;
-    		margin-bottom:30px;
-    		padding:10px 50px 50px;
-    		position:relative;
-    		margin-top:20px;
-    		display:table
-}
+#cf_custom{width:100%;height:500px;margin:auto}
+.cf_custom{border:0 none !important;outline:0 none;display:block;text-transform:uppercase;float:left}
+#cf_name,#cf_email,#cf_dropdown,#cf_message{color:#111 !important;background:#fbd555;font-family:'Futuramc',sans-serif;font-size:1.1em;text-transform:uppercase;font-weight:900;margin:10px}
+#cf_name,#cf_email,#cf_dropdown{width:300px;height:50px}
+#cf_name,#cf_email{padding:0 10px !important}
+#cf_email{margin-right:0}
+#cf_dropdown{padding:4px 0 4px 10px !important;width:300px;height:50px}
+#cf_message{max-width:940px;width:940px;height:340px}
+#cf_submit{background:transparent;color:#000;font-size:45px;width:160px;display:block;position:relative;left:50%;margin-left:-80px}
+#cf_submit:hover{color:#666}
+#cf_custom span.wpcf7-not-valid-tip{left:70%;margin-top:50px;position:relative;top:20%}
+#cf_custom div.wpcf7-validation-errors{margin-top:50px}
+.wrapper{margin-left:auto;margin-right:auto}
+#sponsor{background-color:#fff;padding:20px 0;text-align:center;max-width:2000px;margin-left:auto;margin-right:auto}
+.sponsorTitle{margin:20px}
+.flexslider .slides{zoom:1;max-width:900px}
+.promotion2{background:#fff;-moz-box-shadow:5px 5px 0 0 rgba(0,0,0,0.1);-webkit-box-shadow:5px 5px 0 0 rgba(0,0,0,0.1);-webkit-box-shadow:5px 5px 0 0 rgba(0,0,0,0.1);box-shadow:5px 5px 0 0 rgba(0,0,0,0.1);display:block;font:1em "futuramc",sans-serif;color:#111;text-decoration:none;margin-bottom:30px;padding:10px 50px 50px;position:relative;margin-top:20px;display:table}
