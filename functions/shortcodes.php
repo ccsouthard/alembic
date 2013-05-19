@@ -29,8 +29,10 @@ function shortcode_portfilio($atts){
 	if($atts['count']){
 		$query .=' &posts_per_page=' . $atts["count"];
 	}
-	if($atts['orderby']){
-		$query .= '&orderby=' . $atts['orderby'];
+	foreach(array('orderby', 'cat') as $attr) {
+		if($atts[$attr]){
+			$query .=' &' . $attr . '=' . $atts[$attr];
+		}
 	}
 	query_posts($query);
 
