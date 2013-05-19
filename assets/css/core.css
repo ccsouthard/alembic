@@ -182,11 +182,10 @@ input[type=submit]:hover,input[type=button]:hover{background:#333;-webkit-transi
 form *{font-family:'Sans-Serif';text-transform:uppercase;margin:0;padding:0;position:static}
 form p{margin-bottom:0 !important}
 #cf_name,#cf_email,#cf_dropdown{height:40px}
-#cf_name,#cf_email,#cf_dropdown,#cf_message{padding:6px;margin:5px 0;color:#484747;background-color:#fff;border:3px solid #d3d3d2;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-weight:900;width:100%;}
+#cf_name,#cf_email,#cf_dropdown,#cf_message{padding:6px;margin:5px 0;border:3px solid #d3d3d2;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-weight:900;width:100%;color:#111;background:#fbd555;font-family:'Futuramc',sans-serif;font-size:1.1em;text-transform:uppercase;font-weight:900;margin:10px;}
 #cf_name:focus,#cf_email:focus,#cf_dropdown:focus,#cf_message:focus{border-color:#cfb212}
 #cf_custom{width:100%;height:500px;margin:auto}
 .cf_custom{border:0 none !important;outline:0 none;display:block;text-transform:uppercase;float:left}
-#cf_name,#cf_email,#cf_dropdown,#cf_message{color:#111 !important;background:#fbd555;font-family:'Futuramc',sans-serif;font-size:1.1em;text-transform:uppercase;font-weight:900;margin:10px}
 #cf_name,#cf_email,#cf_dropdown{width:300px;height:50px}
 #cf_name,#cf_email{padding:0 10px !important}
 #cf_email{margin-right:0}
