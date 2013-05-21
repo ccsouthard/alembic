@@ -7,22 +7,56 @@
 ?>
 
 <div id="comments">
+	<?php
+	if(comments_open()):
+	?>
+		<div id="respond">
+			<?php
+			if(get_option('comment_registration') && !is_user_logged_in()):
+				_e( 'Please login to comment.', 's' );
+			?>
+		</div>
 
-<?php 
-if(post_password_required()):
+		<?php
+		else:
+		?>
+			<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+				<span class="wpcf7-form-control-wrap">
+					<input name="author" value="<?php _e('Name', 's'); ?>" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}" id="comment_name" />
+				</span>
+				<span class="wpcf7-form-control-wrap">
+					<input name="email" value="<?php _e('Email', 's'); ?>" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}" id="comment_email" />
+				</span>
+				<span class="wpcf7-form-control-wrap">
+					<input name="url" value="<?php _e('URL', 's'); ?>" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}" id="comment_url" />
+				</span>
+				<span class="wpcf7-form-control-wrap textarea">
+					<textarea name="comment" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}"><?php _e('Comment', 's'); ?>
+					</textarea>
+				</span>
+				<input type="submit" class="button" name="submit" value="Submit" />
+				<small><?php cancel_comment_reply_link(); ?></small>
+				<?php comment_id_fields(); ?>
+				<?php do_action('comment_form', $post->ID); ?>
+			</form>
+		</div>
+
+<?php
+		endif; // If registration required and not logged in
+	endif; // if you delete this the sky will fall on your head
 ?>
+
+<?php if(post_password_required()): ?>
 	<p class="nopassword">
 		<?php _e( 'This post is password protected. Enter the password to view any comments.', 's' ); ?>
 	</p>
-</div>
-<?php
-	return;
-endif;
-if(have_comments()):
-?>
-	<div class="count">
-		<h2><?php comments_number(__( 'No Comments', 's' ), __( '1 Comment', 's' ), __( '% Comments', 's' ) ); ?></h2>
-	</div>
+<?php return; endif; ?>
+
+
+<?php if(have_comments()): ?>
+	<!--<div class="count">
+		<h2><?php comments_number(__( 'No Entries', 's' ), __( '1 Entry', 's' ), __( '% Entries', 's' ) ); ?></h2>
+	</div>-->
 
 	<ul id="comments_list">
 		<?php wp_list_comments('callback=s_comments'); ?>
@@ -57,43 +91,5 @@ if(have_comments()):
 		<?php
 		endif;
 		?>
-	<?php
-	endif;
-	if(comments_open()):
-	?>
-		<div id="respond">
-			<?php
-			if(get_option('comment_registration') && !is_user_logged_in()):
-				_e( 'Please login to comment.', 's' );
-			?>
-		</div>
-
-		<?php
-		else:
-		?>
-			<h2><?php _e( 'Add Comment', 's' ); ?></h2>
-			<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
-				<fieldset>
-				<?php if ( !is_user_logged_in() ) : ?>
-					<input name="author" value="<?php _e('Name', 's'); ?>" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}" id="comment_name" />
-					<input name="email" value="<?php _e('Email', 's'); ?>" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}" id="comment_email" />
-					<input name="url" value="<?php _e('URL', 's'); ?>" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}" id="comment_url" />
-				<?php endif; ?>
-
-					<textarea name="comment" rows="10" cols="10" id="comment" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}">
-						<?php _e('Comment', 's'); ?>
-					</textarea>
-
-					<input type="submit" class="button" name="submit" value="Submit" />
-					<small><?php cancel_comment_reply_link(); ?></small>
-				<?php comment_id_fields(); ?>
-				<?php do_action('comment_form', $post->ID); ?>
-				</fieldset>
-			</form>
-		</div>
-
-<?php
-		endif; // If registration required and not logged in
-	endif; // if you delete this the sky will fall on your head
-?>
+	<?php endif; ?>
 </div>
