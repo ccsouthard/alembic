@@ -4,7 +4,6 @@
 		<?php if(!get_the_title()==''){echo '<h1>'.get_the_title().'</h1>';}?>
 		<?php the_content(); ?>
 		<?php comments_template(); ?>
-	</section>
 <?php endwhile; ?>
 <?php else: //If no posts are present ?>
 	<section class="entry group">

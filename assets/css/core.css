@@ -204,7 +204,8 @@ nav.fixed{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,0.8);z-in
 #social-3{width:14px;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAABQCAYAAAApzERWAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QUOECgcHzEMhwAAANtJREFUWMPtlrENwkAMRV+iDMAGMAIbJDUVYoJI1LACxw4sgMQAjBBKZoCChhJaStNQIOOI04GQUPwlF+fzS3Rf55MREVqiFpFGbM0KXjUEtkCfdp1zlehFQAA3DY4jIICrBgfE6ZJHFK2BTMUxBjxZyZxEJYMFEJ7WlVFTqRqATSYikvDD0e/P+JE5S2VEqWp2QKNyB91KwWihYLXdH5njoINpytJeDnfVweQrN5mu2vbqR5TG3tznnI7POQWwePPx0rg9+y7MOdrVYICN4ao/Vg76nOOuOvhl8A6buY0eN63hUAAAAABJRU5ErkJggg==")}
 @media only screen and (max-width: 500px){#logo,nav{display:block;text-align:center}
 .social{border-left:none}
-}#options li:first-child,.wrap h1:first-child{margin-left:20px}
+}.comment p{margin:0;margin-top:10px}
+#options li:first-child,.wrap h1:first-child{margin-left:20px}
 .group:before,.group:after{content:"";display:table}
 .group:after{clear:both}
 .group{zoom:1}
