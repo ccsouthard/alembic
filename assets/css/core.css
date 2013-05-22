@@ -162,8 +162,8 @@ a.crl{width:100px;height:100px;background:#000;display:inline-block;position:abs
 #back-top a:hover span{background-color:#484747}
 #about{margin:10px 0 0;overflow:auto}
 input{border:none;}
-input[type=submit],input[type=button]{background:#555;color:#fff;padding:10px 20px;}
-input[type=submit]:hover,input[type=button]:hover{background:#333;-webkit-transition-duration:.3s;-moz-transition-duration:.3s;-o-transition-duration:.3s;-ms-transition-duration:.3s;transition-duration:.3s}
+input[type=submit],input[type=button]{background:none;color:#555;padding:10px 20px;}
+input[type=submit]:hover,input[type=button]:hover{color:#333;-webkit-transition-duration:.3s;-moz-transition-duration:.3s;-o-transition-duration:.3s;-ms-transition-duration:.3s;transition-duration:.3s}
 #cf_custom span.wpcf7-not-valid-tip{left:70%;margin-top:50px;position:relative;top:20%}
 #cf_custom div.wpcf7-validation-errors{margin-top:50px}
 form{font-size:0;}
@@ -174,9 +174,9 @@ input,textarea,select{width:100%;font-size:26px;display:inline-block;text-transf
 input:focus,textarea:focus,select:focus{border-color:#cfb212}
 input,select{height:50px}
 .wpcf7-form-control-wrap{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:10px;padding-right:0;padding-top:0;display:inline-block;font-size:26px;width:33.3%;}
-@media only screen and (max-width: 800px){.wpcf7-form-control-wrap{width:100%;padding-left:0}
+@media only screen and (max-width: 800px){.wpcf7-form-control-wrap{width:100% !important;padding-left:0}
 }.wpcf7-form-control-wrap:first-child{padding-left:0}
-.wpcf7-form-control-wrap[class*="textarea"]{padding:0;width:100%}
+.wpcf7-form-control-wrap[class*="textarea"]{padding:0;width:100% !important}
 textarea{resize:vertical;min-height:300px}
 .cf_custom{outline:0 none}
 header{padding:10px 0;background:#000}
@@ -205,6 +205,7 @@ nav.fixed{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,0.8);z-in
 @media only screen and (max-width: 500px){#logo,nav{display:block;text-align:center}
 .social{border-left:none}
 }.comment p{margin:0;margin-top:10px}
+#guestbook-form .wpcf7-form-control-wrap{width:50%}
 #options li:first-child,.wrap h1:first-child{margin-left:20px}
 .group:before,.group:after{content:"";display:table}
 .group:after{clear:both}

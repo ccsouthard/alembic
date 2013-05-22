@@ -19,21 +19,18 @@ if(comments_open()):
 	else:
 	?>
 
-		<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+		<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="guestbook-form">
 			<span class="wpcf7-form-control-wrap">
-				<input name="author" value="<?php _e('Name', 's'); ?>" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}" id="comment_name" />
+				<input name="author" value="Name" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}" id="comment_name" />
 			</span>
 			<span class="wpcf7-form-control-wrap">
-				<input name="email" value="<?php _e('Email', 's'); ?>" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}" id="comment_email" />
-			</span>
-			<span class="wpcf7-form-control-wrap">
-				<input name="url" value="<?php _e('URL', 's'); ?>" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}" id="comment_url" />
+				<input name="email" value="Email" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}" id="comment_email" />
 			</span>
 			<span class="wpcf7-form-control-wrap textarea">
-				<textarea name="comment" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}"><?php _e('Comment', 's'); ?>
+				<textarea name="comment" onfocus="if(this.value==this.defaultValue){this.value=''}" onblur="if(this.value==''){this.value=this.defaultValue}">Comment
 				</textarea>
 			</span>
-			<input type="submit" class="button" name="submit" value="Submit" />
+			<input type="submit" class="button" name="submit" value="Share" />
 			<small><?php cancel_comment_reply_link(); ?></small>
 			<?php comment_id_fields(); ?>
 			<?php do_action('comment_form', $post->ID); ?>
